@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -11,10 +10,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8000"
-	}
+	port := "8000"
 	fmt.Printf("using port %s", port)
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":"+port, nil)
